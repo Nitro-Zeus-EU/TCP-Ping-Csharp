@@ -1,0 +1,31 @@
+
+             private void guna2Button12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process[] proc = Process.GetProcessesByName("paping");
+                if (string.IsNullOrWhiteSpace(host.Text) || string.IsNullOrWhiteSpace(port.Text))
+                {
+                    iptoolsbox.Text = "Error: IP And Port Fields Cannot Be Empty";
+                    return;
+                }
+                else
+                {
+                    new Process
+                    {
+                        StartInfo =
+                {
+                    UseShellExecute = false,
+                    FileName = "paping.exe",
+                    Arguments = host.Text + " -p " + port.Text
+                }
+                    }.Start();
+                }
+            }
+
+            catch
+            {
+                iptoolsbox.Text = "Error: Paping Not Found ";
+                return;
+            }
+        }
